@@ -1,9 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
 
-  // x, y
+  this.x = x;
+  this.y = y;
 
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
@@ -42,16 +43,35 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-  // update x, y based on input
+Player.prototype.handleInput = function(input) {
+  if (input == 'left' && this.x > 0) {
+    this.x -= 101;
+  } else if (input == 'right' && this.x < 404) {
+    this.x += 101;
+  } else if (input == 'up' && this.y > 0) {
+    this.y -= 83;
+  } else if (input == 'down' && this.y < 303) {
+    this.y += 83;
+  }
+
+  if (this.y < 0) {
+    // normal function wouldnt work because of .this
+    setTimeout(() => {
+      this.x = 101 * 2;
+      this.y = 385;
+    }, 300);
+  }
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
+const enemy = new Enemy(100, 100);
+allEnemies.push(enemy);
 
 // Place the player object in a variable called player
-const player = new Player(202.5, 385);
+// as bottom plate creates pseudo 3d, had to pass Y manually
+const player = new Player(101 * 2, 385);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -66,6 +86,8 @@ document.addEventListener('keyup', function(e) {
   player.handleInput(allowedKeys[e.keyCode]);
 });
 
+// ********* class based alternative *********
+
 // class Player {
 //   constructor() {
 //     this.x = x;
@@ -77,7 +99,24 @@ document.addEventListener('keyup', function(e) {
 //     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 //   };
 
-//   handleInput = function() {
-//     // update x, y based on input
+//   handleInput = function(input) {
+//     if (input == 'left' && this.x > 0) {
+//   this.x -= 101;
+// } else if (input == 'right' && this.x < 404) {
+//   this.x += 101;
+// } else if (input == 'up' && this.y > 0) {
+//   this.y -= 83;
+// } else if (input == 'down' && this.y < 332) {
+//   this.y += 83;
+// }
+
+// if (this.y < 0) {
+//   // normal function wouldnt work because of this
+//   setTimeout(() => {
+//     this.x = 101 * 2;
+//     this.y = 385;
+//   }, 300);
+// }
+
 //   };
 // }
