@@ -1,3 +1,9 @@
 body {
-    text-align: center;
+  text-align: center;
+}
+
+p {
+  position: relative;
+  top: 50px;
+  font-weight: 600;
 }
