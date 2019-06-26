@@ -6,4 +6,5 @@
 
 # todo:
 
+- randomize speed, more random enemies, bugged counter
 - collectibles(gems..), improved score system(lives, bonus points, timer..), sounds, 2 player mode?
