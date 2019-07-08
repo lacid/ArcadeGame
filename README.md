@@ -2,7 +2,7 @@
 
 - Frogger kind of game, to experience OOP paradigm.
 - Reach water to gain score.
-  [Try the live version](https://lacid.github.io/ArcadeGame/) or download, unzip, open index.html using browser.
+  [Try the live version](https://lacid.github.io/arcade_game/) or download, unzip, open index.html using browser.
 
 # todo:
 
